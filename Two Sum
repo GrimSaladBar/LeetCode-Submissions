@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> output;
+        
+        /*Big-O(n^2)
+        for (int i = 0; i < nums.size() - 1; i++){
+            for (int j = i + 1; j <= nums.size() - 1; i++){
+                if (nums[i] + nums[j] == target){
+                    output.push_back(j);
+                    output.push_back(i);
+                    return output;
+                }
+            }
+        }*/
+
+        //O(n) Time Complexity
+        unordered_map<int, int> seen;
+
+        for (int i = 0; i < nums.size(); i++){
+            int diff = target - nums[i];
+
+            if (seen.find(diff) != seen.end()){
+                output.push_back(seen[diff]);
+                output.push_back(i);
+                return output;
+            }
+            else
+                seen[nums[i]] = i;
+        }        
+        return output;
+    }
+};
