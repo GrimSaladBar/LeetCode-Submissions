@@ -1,0 +1,35 @@
+//C++ Solution
+class Solution {
+public:
+    bool isPalindrome(int x) {
+    /* 
+        Convert Int to String 
+        if (x < 0) return false;
+        if (x > 0 && x % 10 == 0) return false;
+        if (x >= 0 && x <= 9) return true;
+        
+        string xStr = to_string(x);
+
+        for (int x = 0; x < (xStr.length()/2); x++){
+            swap(xStr[x], xStr[xStr.length() - 1 - x]);
+        }
+
+        if (xStr == to_string(x))
+            return true;
+        else
+            return false;
+    */
+        //Without converting to String
+        int original = x;
+        long temp = 0;
+
+        if (x < 0) return false;
+        
+        while (x > 0){
+            temp = (temp * 10) + (x % 10);
+            x = x/10;
+        }
+
+        return temp == original;
+    }
+};
