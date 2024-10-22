@@ -1,0 +1,21 @@
+//C++ Solution
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int move = 1;
+        int uniqueIndex = 0;
+
+        for (int i = 1; i < nums.size(); i++){
+            if (nums[uniqueIndex] == nums[i]){
+                //nums.erase(nums.begin() + i);
+            }
+            else{
+                nums[move] = nums[i];
+                //nums.erase(nums.begin() + i);
+                uniqueIndex = move;
+                move++;
+            }
+        }
+        return move;
+    }
+};
