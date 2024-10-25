@@ -1,0 +1,21 @@
+//C++ Solution
+//Inspired by the solution provided to me from a Mock Interview on an Anagram Question [Not 100% My Solution]
+//I believe the Interview's name was Daniel Mock
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        if (s.length() != t.length()) return false;
+
+        int charArray[200];
+
+        for (int i = 0; i < s.length(); ++i){
+            charArray[s[i]]++;
+            charArray[t[i]]--;
+        }
+
+        for (int i = 0; i < 200; ++i){
+            if (charArray[i] != 0) return false;
+        }
+        return true;
+    }
+};
