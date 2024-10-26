@@ -1,0 +1,38 @@
+//C++ Solution
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        //Stack Method
+        //Check for empty list
+        if (head == NULL) return head;
+        if (head->next == NULL) return head;
+
+        vector<int> list;
+        ListNode* output = new ListNode();
+        ListNode* outputHead = output;
+
+        while (head != NULL){
+            list.push_back(head->val);
+            head = head->next;
+        }
+
+        for (int i = 0; i < list.size(); i++){
+            output->val = list[list.size() - i - 1];
+            if (list.size() - i - 1 == 0) continue;
+            output->next = new ListNode();
+            output = output->next;
+        }
+        
+        return outputHead;
+    }
+};
